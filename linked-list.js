@@ -2,4 +2,17 @@ export default class LinkedList {
   constructor() {
     this.head = null;
   }
+
+  append(value) {
+    const node = new Node();
+    node.value = value;
+
+    if (!this.head) {
+      this.head = node;
+    } else {
+      let current = this.head;
+      while (current.nextNode) current = current.nextNode;
+      current.nextNode = node;
+    }
+  }
 }
