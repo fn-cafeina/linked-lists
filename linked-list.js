@@ -41,4 +41,11 @@ export default class LinkedList {
 
     return this.tail_(pointer.nextNode);
   }
+
+  at(index, pointer = this.head) {
+    if (!index) return pointer.value;
+    if (!pointer || !pointer.nextNode) return undefined;
+
+    return this.at(index - 1, pointer.nextNode);
+  }
 }
