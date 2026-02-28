@@ -27,6 +27,7 @@ export default class LinkedList {
 
   size(pointer = this.head) {
     if (!pointer) return 0;
+
     return this.size(pointer.nextNode) + 1;
   }
 
@@ -37,6 +38,7 @@ export default class LinkedList {
   tail_(pointer = this.head) {
     if (!pointer) return undefined;
     if (!pointer.nextNode) return pointer.value;
+
     return this.tail_(pointer.nextNode);
   }
 }
