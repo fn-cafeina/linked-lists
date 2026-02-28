@@ -5,47 +5,29 @@ export default class LinkedList {
     this.head = null;
   }
 
-  append(value) {
-    const node = new Node();
-    node.value = value;
-
+  append(value, pointer = this.head) {
     if (!this.head) {
-      this.head = node;
-    } else {
-      let current = this.head;
-      while (current.nextNode) current = current.nextNode;
-      current.nextNode = node;
+      this.head = new Node(value);
+      return;
     }
+
+    if (!pointer.nextNode) {
+      pointer.nextNode = new Node(value);
+      return;
+    }
+
+    return this.append(value, pointer.nextNode);
   }
 
   prepend(value) {
-    const node = new Node();
-    node.value = value;
+    const node = new Node(value);
     node.nextNode = this.head;
     this.head = node;
   }
 
-  size() {
-    if (!this.head) return 0;
+  size(pointer = this.head) {
+    if (!pointer) return 0;
 
-    let size = 1;
-
-    let current = this.head;
-    while (current.nextNode) {
-      current = current.nextNode;
-      size++;
-    }
-
-    return size;
-  }
-
-  head_() {
-    return this.head ? this.head.value : undefined;
-  }
-
-  tail_() {
-    let current = this.head;
-    while (current.nextNode) current = current.nextNode;
-    return current.value;
+    return this.size(pointer.nextNode) + 1;
   }
 }
