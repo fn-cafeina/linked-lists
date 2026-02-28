@@ -38,4 +38,8 @@ export default class LinkedList {
 
     return size;
   }
+
+  getHead() {
+    return this.head ? this.head.value : undefined;
+  }
 }
