@@ -48,4 +48,13 @@ export default class LinkedList {
 
     return this.at(index - 1, pointer.nextNode);
   }
+
+  pop() {
+    if (!this.head) return undefined;
+
+    const value = this.head.value;
+    this.head = this.head.nextNode;
+
+    return value;
+  }
 }
