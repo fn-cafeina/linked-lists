@@ -42,4 +42,10 @@ export default class LinkedList {
   head_() {
     return this.head ? this.head.value : undefined;
   }
+
+  tail_() {
+    let current = this.head;
+    while (current.nextNode) current = current.nextNode;
+    return current.value;
+  }
 }
