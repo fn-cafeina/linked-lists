@@ -27,7 +27,16 @@ export default class LinkedList {
 
   size(pointer = this.head) {
     if (!pointer) return 0;
-
     return this.size(pointer.nextNode) + 1;
+  }
+
+  head_() {
+    return this.head ? this.head.value : undefined;
+  }
+
+  tail_(pointer = this.head) {
+    if (!pointer) return undefined;
+    if (!pointer.nextNode) return pointer.value;
+    return this.tail_(pointer.nextNode);
   }
 }
