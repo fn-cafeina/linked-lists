@@ -60,6 +60,7 @@ export default class LinkedList {
 
   contains(value, pointer = this.head) {
     if (value === pointer.value) return true;
+    if (!pointer.nextNode) return false;
 
     return this.contains(value, pointer.nextNode);
   }
