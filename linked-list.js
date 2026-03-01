@@ -71,4 +71,20 @@ export default class LinkedList {
 
     return this.findIndex(value, pointer.nextNode, index + 1);
   }
+
+  toString() {
+    if (!this.head) return "";
+
+    let pointer = this.head;
+    let string = `( ${pointer.value} ) ->`;
+
+    while (pointer.nextNode) {
+      pointer = pointer.nextNode;
+      string += ` ( ${pointer.value} ) ->`;
+    }
+
+    string += " null";
+
+    return string;
+  }
 }
