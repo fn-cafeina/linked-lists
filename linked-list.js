@@ -118,4 +118,19 @@ export default class LinkedList {
     while (pointer.nextNode) pointer = pointer.nextNode;
     pointer.nextNode = clone;
   }
+
+  removeAt(index) {
+    const currentNodesValue = [];
+
+    let pointer = this.head;
+    currentNodesValue.push(pointer.value);
+    while (pointer.nextNode) {
+      pointer = pointer.nextNode;
+      currentNodesValue.push(pointer.value);
+    }
+
+    currentNodesValue.splice(index, 1);
+    this.head = null;
+    currentNodesValue.forEach((value) => this.append(value));
+  }
 }
