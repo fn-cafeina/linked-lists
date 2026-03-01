@@ -68,6 +68,7 @@ export default class LinkedList {
   findIndex(value, pointer = this.head, index = 0) {
     if (!pointer) return -1;
     if (value === pointer.value) return index;
+
     return this.findIndex(value, pointer.nextNode, index + 1);
   }
 }
