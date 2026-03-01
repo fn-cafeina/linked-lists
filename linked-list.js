@@ -87,4 +87,35 @@ export default class LinkedList {
 
     return string;
   }
+
+  insertAt(index, ...values) {
+    if (index < 0 || index > this.size()) {
+      throw new RangeError("The index must be beetween 0 and " + this.size());
+    }
+
+    if (index === 0) {
+      values.reverse().forEach((value) => this.prepend(value));
+      return;
+    }
+
+    if (index === this.size()) {
+      values.forEach((value) => this.append(value));
+      return;
+    }
+
+    let pointer = this.head;
+
+    while (index - 1) {
+      pointer = pointer.nextNode;
+      index--;
+    }
+
+    const clone = structuredClone(pointer.nextNode);
+    pointer.nextNode = null;
+
+    values.forEach((value) => this.append(value, pointer));
+
+    while (pointer.nextNode) pointer = pointer.nextNode;
+    pointer.nextNode = clone;
+  }
 }
